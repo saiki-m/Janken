@@ -63,9 +63,13 @@ public class Judge{
 		
 		if(finalWinner != null) {
 			
-			//勝者を表示する
-			System.out.println(players.get(0).getWinCount() + "対" + players.get(1).getWinCount() 
-					+ "で" + finalWinner.getName() + "が勝ちました！\n" );
+			System.out.print(players.get(0).getWinCount());
+			
+			for(int i = 1; i < players.size(); i++) {
+				System.out.print("対" + players.get(i).getWinCount() );
+			}
+		
+			System.out.println("で" + finalWinner.getName() + "が勝ちました！\n");
 		}
 		else {
 			
