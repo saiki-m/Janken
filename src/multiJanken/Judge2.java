@@ -6,10 +6,10 @@ import java.util.List;
 /**
  * ジャンケンの審判を表すクラス。
  */
-public class Judge{
+public class Judge2{
 	
 	//じゃんけん回数
-	private final int count = 5;
+	private final int count = 2;
 	
 	/**
 	 * ジャンケンを開始する。
@@ -20,44 +20,31 @@ public class Judge{
 	public void startJanken(List<Player> players) {
 		
 		//ジャンケンの開始を宣言する。
-		System.out.println("【ジャンケン開始】");
+		System.out.println("【ジャンケン開始】\n");
 		
 		//ジャンケンを3回行う
 		for(int i = 0; i < count; i++) {
 			
 			//何回戦目か表示する
-			System.out.printf("\n\n【%d回戦目】\n", (i + 1) );
+			System.out.printf("【%d回戦目】\n", (i + 1) );
 			
-			List<Integer> playerHand = new ArrayList<Integer>();
+			Player winner = judgeJanken(players);
 			
-			for(int k = 0; k < players.size(); k++) {
+			if(winner != null) {
 				
-				if(k >= 1) {
-					
-					System.out.printf(" vs. ");
-				}
-
-				playerHand.add(players.get(k).showHand());
+				//勝者を表示する
+				System.out.println("\n" + winner.getName() + "が勝ちました！\n" );
+				
+				//勝ったプレイヤーへ結果を伝える
+				winner.notifyResult();			
 			}
-			
-				for(int j = 0; j < players.size(); j++) {
-					
-					Player winner = judgeJanken(players, playerHand, j);
-					
-					if(winner != null) {
-						
-						//勝者を表示する
-						System.out.println("\n" + winner.getName() + "が勝ちました！\n" );
-						
-						//勝ったプレイヤーへ結果を伝える
-						winner.notifyResult();
-					}
+			else {
 				
-				
+				System.out.println("\n引き分けです！\n" );
 			}
 		}
 		
-		System.out.println("\n\n【ジャンケン終了】\n");
+		System.out.println("【ジャンケン終了】\n");
 		
 		Player finalWinner = judgeFinalWinner(players);
 		
@@ -69,7 +56,7 @@ public class Judge{
 		}
 		else {
 			
-			System.out.println("引き分けです！\n" );
+			System.out.println("\n引き分けです！\n" );
 		}
 	}
 	
@@ -80,21 +67,54 @@ public class Judge{
 	 * @param player2: 判定対象プレイヤー2
 	 * @return: 勝ったプレイヤーのインスタンス。引き分けの場合はnull。
 	 */
-	private Player judgeJanken(List<Player> players, List<Integer> playerHand, int j) {
+	private Player judgeJanken(List<Player> players) {
 		
-		if(		JankenConditions.allSameHand(playerHand) ||
-				JankenConditions.differentHands(playerHand)) {
+		List<Integer> playerHand = new ArrayList<Integer>();
+		
+		playerHand.add(players.get(0).showHand());
+		
+		for(int i = 1; i < players.size(); i++) {
 			
+			System.out.printf(" vs. ");
 
+			playerHand.add(players.get(i).showHand());
+		}
+		
+		
+//		for(int i = 0; i < players.size(); i++) {
+//			
+//			if(		JankenConditions.allSameHand(playerHand) ||
+//					JankenConditions.differentHands(playerHand)) {
+//				
+//				return null;	//引き分け
+//			}
+//			else if(JankenConditions.myHandDontLose(playerHand) &&
+//					JankenConditions.DefeatOpponentHand(playerHand)){
+//				
+//				return 
+//			}
+//		
+//		}
+		
+		//勝者を判定する
+		if(    (playerHand.get(0) == Janken.STONE	&& playerHand.get(1) == Janken.SCISSORS)
+				|| (playerHand.get(0) == Janken.SCISSORS	&& playerHand.get(1) == Janken.PAPER) 
+				|| (playerHand.get(0) == Janken.PAPER	&& playerHand.get(1) == Janken.STONE)){
+			
+			return players.get(0);		//プレイヤー1の勝利
+		}
+		else if(    (playerHand.get(0) == Janken.STONE	&& playerHand.get(1) == Janken.PAPER)
+			|| (	 playerHand.get(0) == Janken.SCISSORS	&& playerHand.get(1) == Janken.STONE) 
+			|| (	 playerHand.get(0) == Janken.PAPER		&& playerHand.get(1) == Janken.SCISSORS)){
+			
+			return players.get(1);		//プレイヤー2の勝利
+		}
+		else {
+				
 			return null;	//引き分け
 		}
-		else if(JankenConditions.myHandDontLose(playerHand, j) &&
-				JankenConditions.DefeatOpponentHand(playerHand, j)){
-			
-			return players.get(j);
-		}
 		
-		return null;
+		
 		
 	}
 	

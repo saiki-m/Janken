@@ -15,14 +15,13 @@ public class ObjectJanken {
 		
 		List<Player> players = new ArrayList<Player>
 			(Arrays.asList(
-				new Player("安藤さん"), new Player("山田さん")));
+				new Player("安藤さん"), new Player("山田さん"), new Player("桃井さん")));
 		
 		//審判インスタンスを作成
 		Judge tanaka = new Judge();
 		
 		//ジャンケンを開始する
 		tanaka.startJanken(players);
-		System.out.println(0%1);
 	}
 
 }
