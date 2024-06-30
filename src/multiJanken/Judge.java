@@ -81,27 +81,32 @@ public class Judge{
 		}
 		
 		
+		for(int i = 1; i < player.size(); i++) {
+			
+			
 		
-//		//勝者を判定する
-//		if(    (playerHand.get(0) == Janken.STONE	&& playerHand.get(1) == Janken.SCISSORS)
-//				|| (playerHand.get(0) == Janken.SCISSORS	&& playerHand.get(1) == Janken.PAPER) 
-//				|| (playerHand.get(0) == Janken.PAPER	&& playerHand.get(1) == Janken.STONE)){
-//			
-//			return player.get(0);		//プレイヤー1の勝利
-//		}
-//		else if(    (playerHand.get(0) == Janken.STONE	&& playerHand.get(1) == Janken.PAPER)
-//			|| (	 playerHand.get(0) == Janken.SCISSORS	&& playerHand.get(1) == Janken.STONE) 
-//			|| (	 playerHand.get(0) == Janken.PAPER		&& playerHand.get(1) == Janken.SCISSORS)){
-//			
-//			return player.get(1);		//プレイヤー2の勝利
-//		}
-//		else {
-//				
-//			return null;	//引き分け
-//		}
-//		
+		}
 		
-		if()
+		//勝者を判定する
+		if(    (playerHand.get(0) == Janken.STONE	&& playerHand.get(1) == Janken.SCISSORS)
+				|| (playerHand.get(0) == Janken.SCISSORS	&& playerHand.get(1) == Janken.PAPER) 
+				|| (playerHand.get(0) == Janken.PAPER	&& playerHand.get(1) == Janken.STONE)){
+			
+			return player.get(0);		//プレイヤー1の勝利
+		}
+		else if(    (playerHand.get(0) == Janken.STONE	&& playerHand.get(1) == Janken.PAPER)
+			|| (	 playerHand.get(0) == Janken.SCISSORS	&& playerHand.get(1) == Janken.STONE) 
+			|| (	 playerHand.get(0) == Janken.PAPER		&& playerHand.get(1) == Janken.SCISSORS)){
+			
+			return player.get(1);		//プレイヤー2の勝利
+		}
+		else {
+				
+			return null;	//引き分け
+		}
+		
+		
+		
 	}
 	
 	/**

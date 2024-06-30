@@ -22,6 +22,7 @@ public class ObjectJanken {
 		
 		//ジャンケンを開始する
 		tanaka.startJanken(players);
+		System.out.println(0%1);
 	}
 
 }

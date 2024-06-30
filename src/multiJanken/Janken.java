@@ -1,6 +1,9 @@
 package multiJanken;
 
 public class Janken {
+	
+	//ジャンケンの手の種類
+	public static final int HandkindNumber = 3;
 		
 	//ジャンケンの手を表す定数
 	public static final int STONE = 0;	//グー
