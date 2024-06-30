@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * ジャンケンの審判を表すクラス。
  */
-public class Judge{
+public class Judge2{
 	
 	//じゃんけん回数
 	private final int count = 2;
@@ -80,28 +80,24 @@ public class Judge{
 			playerHand.add(player.get(i).showHand());
 		}
 		
+		//勝者を判定する
+		if(    (playerHand.get(0) == Janken.STONE	&& playerHand.get(1) == Janken.SCISSORS)
+				|| (playerHand.get(0) == Janken.SCISSORS	&& playerHand.get(1) == Janken.PAPER) 
+				|| (playerHand.get(0) == Janken.PAPER	&& playerHand.get(1) == Janken.STONE)){
+			
+			return player.get(0);		//プレイヤー1の勝利
+		}
+		else if(    (playerHand.get(0) == Janken.STONE	&& playerHand.get(1) == Janken.PAPER)
+			|| (	 playerHand.get(0) == Janken.SCISSORS	&& playerHand.get(1) == Janken.STONE) 
+			|| (	 playerHand.get(0) == Janken.PAPER		&& playerHand.get(1) == Janken.SCISSORS)){
+			
+			return player.get(1);		//プレイヤー2の勝利
+		}
+		else {
+				
+			return null;	//引き分け
+		}
 		
-		
-//		//勝者を判定する
-//		if(    (playerHand.get(0) == Janken.STONE	&& playerHand.get(1) == Janken.SCISSORS)
-//				|| (playerHand.get(0) == Janken.SCISSORS	&& playerHand.get(1) == Janken.PAPER) 
-//				|| (playerHand.get(0) == Janken.PAPER	&& playerHand.get(1) == Janken.STONE)){
-//			
-//			return player.get(0);		//プレイヤー1の勝利
-//		}
-//		else if(    (playerHand.get(0) == Janken.STONE	&& playerHand.get(1) == Janken.PAPER)
-//			|| (	 playerHand.get(0) == Janken.SCISSORS	&& playerHand.get(1) == Janken.STONE) 
-//			|| (	 playerHand.get(0) == Janken.PAPER		&& playerHand.get(1) == Janken.SCISSORS)){
-//			
-//			return player.get(1);		//プレイヤー2の勝利
-//		}
-//		else {
-//				
-//			return null;	//引き分け
-//		}
-//		
-		
-		if()
 	}
 	
 	/**
